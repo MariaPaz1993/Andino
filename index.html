@@ -11,46 +11,112 @@
       background-color: #fdfbf7;
       color: #3e2e2e;
       margin: 0;
-      padding: 20px;
+      padding: 12px;
     }
     header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     header img {
-      max-width: 120px;
+      max-width: 100px;
       margin-bottom: 10px;
     }
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2em;
+      font-size: 2.2em;
       margin: 0;
+      letter-spacing: 2px;
     }
-    h2 {
-      border-bottom: 2px solid #d4b16a;
-      padding-bottom: 5px;
-      margin-top: 40px;
+    .accordion {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(190,160,90,0.06);
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .accordion-section {
+      border-bottom: 1px solid #eee5cf;
+    }
+    .accordion-section:last-child {
+      border-bottom: none;
+    }
+    .accordion-title {
+      font-size: 1.13em;
+      padding: 18px 18px 18px 36px;
+      background: #fff7ed;
+      color: #3e2e2e;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      width: 100%;
+      text-align: left;
+      position: relative;
+      transition: background 0.15s;
+    }
+    .accordion-title::before {
+      content: '▼';
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%) rotate(0deg);
+      transition: transform 0.2s;
+      font-size: 0.85em;
+      color: #a77c3b;
+    }
+    .accordion-title.active::before {
+      transform: translateY(-50%) rotate(-180deg);
+    }
+    .accordion-content {
+      display: none;
+      padding: 10px 28px 18px 36px;
+      background: #fffdfa;
+      animation: fadeIn 0.3s;
     }
     .item {
-      margin: 20px 0;
+      margin-bottom: 14px;
     }
     .item h3 {
       margin: 0;
-      font-size: 1.1em;
+      font-size: 1.07em;
       font-weight: 600;
+      color: #533c1c;
     }
     .item p {
-      margin: 4px 0;
-      font-size: 0.95em;
+      margin: 4px 0 0 0;
+      font-size: 0.97em;
     }
     .price {
       font-weight: bold;
       color: #a77c3b;
+      float: right;
+      margin-left: 12px;
+      font-size: 0.99em;
     }
-    @media (max-width: 600px) {
-      body {
-        padding: 15px;
-      }
+    .call-button {
+      background-color: #a77c3b;
+      color: white;
+      padding: 13px 28px;
+      text-decoration: none;
+      border-radius: 9px;
+      font-weight: bold;
+      font-size: 1.05em;
+      display: inline-block;
+      margin: 38px auto 0 auto;
+      box-shadow: 0 3px 15px rgba(190,160,90,0.07);
+    }
+    .call-button:active {
+      background-color: #533c1c;
+    }
+    @media (max-width: 650px) {
+      header img { max-width: 80px; }
+      h1 { font-size: 1.5em; }
+      .accordion-title { font-size: 1em; padding: 15px 12px 15px 26px;}
+      .accordion-content { padding: 10px 14px 15px 26px;}
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
     }
   </style>
 </head>
@@ -58,58 +124,84 @@
 
 <header>
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mountain_icon.svg/2048px-Mountain_icon.svg.png" alt="Logo Andino" />
-  <h1>ANDINO<br>F U S I Ó N</h1>
+  <h1>ANDINO<br>FUSIÓN</h1>
 </header>
 
-<section>
-  <h2>Para Compartir</h2>
-  <div class="item">
-    <h3>EMPANADAS DE CARNE (4 Unid.)</h3>
-    <p>Filete saltado, cebolla, pimentón rojo, cebollín, cilantro y salsas de la casa.</p>
-    <p class="price">$9.990</p>
-  </div>
-  <!-- Agrega más platos aquí -->
-</section>
+<div class="accordion">
 
-<section>
-  <h2>Tragos Clásicos</h2>
-  <div class="item">
-    <h3>Sour Clásico</h3>
-    <p class="price">$5.500</p>
+  <div class="accordion-section">
+    <button class="accordion-title">Para Compartir</button>
+    <div class="accordion-content">
+      <div class="item">
+        <h3>EMPANADAS DE CARNE (4 Unid.) <span class="price">$9.990</span></h3>
+        <p>Filete saltado, cebolla, pimentón rojo, cebollín, cilantro y salsas de la casa.</p>
+      </div>
+      <!-- Puedes agregar más platos aquí -->
+    </div>
   </div>
-  <div class="item">
-    <h3>Sour Catedral</h3>
-    <p class="price">$7.000</p>
-  </div>
-</section>
 
-<section>
-  <h2>Aperitivos</h2>
-  <div class="item">
-    <h3>Ramazzotti</h3>
-    <p class="price">$5.900</p>
+  <div class="accordion-section">
+    <button class="accordion-title">Tragos Clásicos</button>
+    <div class="accordion-content">
+      <div class="item">
+        <h3>Sour Clásico <span class="price">$5.500</span></h3>
+      </div>
+      <div class="item">
+        <h3>Sour Catedral <span class="price">$7.000</span></h3>
+      </div>
+    </div>
   </div>
-  <div class="item">
-    <h3>Aperol</h3>
-    <p class="price">$5.900</p>
-  </div>
-</section>
 
-<section>
-  <h2>Destilados</h2>
-  <div class="item">
-    <h3>Havana</h3>
-    <p class="price">$5.900</p>
+  <div class="accordion-section">
+    <button class="accordion-title">Aperitivos</button>
+    <div class="accordion-content">
+      <div class="item">
+        <h3>Ramazzotti <span class="price">$5.900</span></h3>
+      </div>
+      <div class="item">
+        <h3>Aperol <span class="price">$5.900</span></h3>
+      </div>
+    </div>
   </div>
-  <div class="item">
-    <h3>Mistral 35°</h3>
-    <p class="price">$5.500</p>
+
+  <div class="accordion-section">
+    <button class="accordion-title">Destilados</button>
+    <div class="accordion-content">
+      <div class="item">
+        <h3>Havana <span class="price">$5.900</span></h3>
+      </div>
+      <div class="item">
+        <h3>Mistral 35° <span class="price">$5.500</span></h3>
+      </div>
+      <div class="item">
+        <h3>Mistral Nobel 40° <span class="price">$6.500</span></h3>
+      </div>
+    </div>
   </div>
-  <div class="item">
-    <h3>Mistral Nobel 40°</h3>
-    <p class="price">$6.500</p>
-  </div>
-</section>
+
+</div>
+
+<!-- BOTÓN LLAMAR GARZÓN -->
+<div style="text-align: center;">
+  <a href="https://wa.me/56912345678?text=Hola,%20¿me%20puedes%20atender%20en%20la%20mesa,%20por%20favor?" class="call-button">
+    📞 Llamar al Garzón
+  </a>
+</div>
+
+<script>
+  // Menú desplegable elegante (no requiere librerías)
+  document.querySelectorAll('.accordion-title').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const content = this.nextElementSibling;
+      this.classList.toggle('active');
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
